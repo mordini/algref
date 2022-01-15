@@ -1,6 +1,6 @@
 # algs
 
-# IMPORTANT
+## IMPORTANT
 
 Make sure you are using the latest LTS version of node or it WILL. NOT. WORK!
 
