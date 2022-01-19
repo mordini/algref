@@ -1,15 +1,13 @@
 <template>
   <section class="case">
-    <p class="name">
-      {{ name }}
+    <p class="caseName">
+      {{ caseName }}
     </p>
     <img :src="require(`@/assets/cases/${image}`)" />
-    <!-- get each algorithm in array of algorithms per case from cases object -->
+    <!-- GET EACH ALGORITHM (the literal sequence of moves) IN ARRAY OF ALGORITHMS PER CASE FROM CASES OBJECT -->
     <div v-for="(alg, index) in algorithm" :key="alg">
-      <p>
-        <b>{{ index + 1 }}: </b>
-        <span class="alg"> {{ alg }} </span>
-      </p>
+      <b>{{ index + 1 }}: </b>
+      <span class="alg"> {{ alg }} </span>
     </div>
   </section>
 </template>
@@ -17,7 +15,7 @@
 <script>
 export default {
   name: 'Algorithm',
-  props: { name: String, image: String, algorithm: Array, type: String },
+  props: { caseName: String, image: String, algorithm: Array, type: String },
   data() {
     return {};
   },
@@ -28,7 +26,7 @@ export default {
 </script>
 
 <style>
-.name {
+.caseName {
   color: red;
   font-size: 200%;
 }

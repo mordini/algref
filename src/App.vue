@@ -1,58 +1,46 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/cases/corner/Aa.png" /> -->
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-  <!-- <div class="left-sidebar">
-    <Algorithm
-      v-for="item in cases"
-      class="grid-item"
-      :image="item.image"
-      :algorithm="item.algorithm"
-      :type="item.type"
-      :name="item.name"
-      :key="item.name"
-      @click="toggleCase"
-    >
-    </Algorithm>
-  </div> -->
   <div class="grid-container">
     <Algorithm
       v-for="item in cases"
       class="grid-item"
+      :id="item.name"
+      :name="item.name"
       :image="item.image"
       :algorithm="item.algorithm"
       :type="item.type"
-      :name="item.name"
+      :caseName="item.name"
       :key="item.name"
-      @click="toggleCase"
+      @click="selectCase"
     >
     </Algorithm>
   </div>
-  <div class="footer">{{ footerElem }}</div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
 import Algorithm from './components/Algorithm.vue';
-import Cases from '@/assets/cases.js';
+import Cases from '@/assets/Cases.js';
 
 export default {
   name: 'App',
   components: {
-    //HelloWorld,
     Algorithm
   },
   data() {
     return {
       cases: Cases,
       selected: false,
-      footerElem: ''
+      showCase: false,
+      displayCase: ''
     };
   },
   methods: {
-    toggleCase() {
-      console.log(event);
-      this.footerElem = event.target;
-      this.selected = !this.selected;
+    selectCase() {
+      console.clear();
+      console.log(event.currentTarget);
+      // this.displayCase = event.currentTarget;
+      // this.showCase = !this.showCase;
+      this.displayCase = event.currentTarget;
+      document.getElementById('algFooter').appendChild(event.currentTarget);
     }
   }
 };
@@ -96,7 +84,7 @@ export default {
   overflow: scroll;
   font-size: 75%;
 }
-.footer {
+footer {
   width: 100%;
   left: 0;
   bottom: 0;
