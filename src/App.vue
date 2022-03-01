@@ -10,7 +10,6 @@
       :type="item.type"
       :caseName="item.name"
       :key="item.name"
-      @click="selectCase"
     >
     </Algorithm>
   </div>
@@ -33,16 +32,7 @@ export default {
       displayCase: ''
     };
   },
-  methods: {
-    selectCase() {
-      console.clear();
-      console.log(event.currentTarget);
-      // this.displayCase = event.currentTarget;
-      // this.showCase = !this.showCase;
-      this.displayCase = event.currentTarget;
-      document.getElementById('algFooter').appendChild(event.currentTarget);
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -53,20 +43,20 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  /*grid-template-columns: auto minmax(0, 1fr);*/
+  /* grid-template-columns: auto minmax(0, 1fr); */
   background-color: lightblue;
   padding: 10% 10% 10% 10%;
-  margin: 0% 0% 10% 0%;
+  /* margin: 0% 0% 10% 0%; */
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 10% 10% 10% 10%;
   margin: 0 0 0 0;
   text-align: center;

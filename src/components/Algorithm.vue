@@ -1,5 +1,13 @@
 <template>
-  <section class="case">
+  <section
+    class="case"
+    :class="{
+      blurred: isBlurred,
+      selected: isSelected,
+      notSelected: Selected
+    }"
+    @click="selectCase"
+  >
     <p class="caseName">
       {{ caseName }}
     </p>
@@ -17,9 +25,38 @@ export default {
   name: 'Algorithm',
   props: { caseName: String, image: String, algorithm: Array, type: String },
   data() {
-    return {};
+    return {
+      isBlurred: false,
+      isSelected: false,
+      firstLoad: true
+    };
   },
-  methods: {},
+  methods: {
+    selectCase() {
+      /*
+        if(isSelected is true
+            and
+          isSelected is not the one clicked on) {
+              don't do anything
+        } else {
+          this.isSelected = !this.isSelected;
+        }
+      */
+      // if(!this.isSelected && this.id)
+
+      this.isSelected = !this.isSelected;
+      console.log(`this.isSelected is: ${this.isSelected}`);
+      console.dir(event.target);
+      // console.log(`${event.target}`);
+      //this.blurCases();
+    },
+    // PAUL NEED TO MAKE THIS BLUR WHOLE PAGE BUT NOT SELECTED
+    blurCases() {
+      console.log(`blur cases`);
+      this.isBlurred = !this.isBlurred;
+      console.log(`this.isBlurred is: ${this.isBlurred}`);
+    }
+  },
   computed: {},
   watch: {}
 };
@@ -43,5 +80,25 @@ export default {
 .p {
   font-family: 'Calibri';
   font-size: x-small;
+}
+.blurred:not(selected) {
+  filter: blur(6px);
+  transition: all 0.2s linear 0s;
+  /* zoom: 0.4; */
+}
+.selected_OLD {
+  transition: all 0.2s linear 0s;
+  transform-origin: center;
+  transform: scale(3);
+}
+#section {
+  transition: all 0.2s linear 0s;
+  transform-origin: center;
+  transform: scale(3);
+}
+#section:selected {
+  transition: all 0.2s linear 0s;
+  transform-origin: center;
+  transform: scale(3);
 }
 </style>
