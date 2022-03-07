@@ -1,13 +1,13 @@
 <template>
   <section
-    class="case"
-    :class="{
-      blurred: isBlurred,
-      selected: isSelected,
-      notSelected: Selected
-    }"
-    @click="selectCase"
-  >
+     class="case"
+     :class="{
+       blurred: isBlurred,
+       selected: isSelected,
+       notSelected: Selected,
+     }"
+     @click="selectCase"
+   >
     <p class="caseName">
       {{ caseName }}
     </p>
@@ -28,7 +28,7 @@ export default {
     return {
       isBlurred: false,
       isSelected: false,
-      firstLoad: true
+      firstLoad: true,
     };
   },
   methods: {
@@ -48,17 +48,16 @@ export default {
       console.log(`this.isSelected is: ${this.isSelected}`);
       console.dir(event.target);
       // console.log(`${event.target}`);
-      //this.blurCases();
+      this.blurCases();
     },
     // PAUL NEED TO MAKE THIS BLUR WHOLE PAGE BUT NOT SELECTED
     blurCases() {
       console.log(`blur cases`);
       this.isBlurred = !this.isBlurred;
-      console.log(`this.isBlurred is: ${this.isBlurred}`);
-    }
+    },
   },
   computed: {},
-  watch: {}
+  watch: {},
 };
 </script>
 
@@ -80,6 +79,10 @@ export default {
 .p {
   font-family: 'Calibri';
   font-size: x-small;
+}
+.blurGrid {
+  filter: blur(6px);
+  transition: all 0.2s linear 0s;
 }
 .blurred:not(selected) {
   filter: blur(6px);

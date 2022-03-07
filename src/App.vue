@@ -1,5 +1,7 @@
 <template>
-  <div class="grid-container">
+  <div class="grid-container"
+       :class="{blurred: isBlurred}"
+       :ref="gridContainer">
     <Algorithm
       v-for="item in cases"
       class="grid-item"
