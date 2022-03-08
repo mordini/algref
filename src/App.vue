@@ -1,7 +1,10 @@
 <template>
-  <div class="grid-container"
-       :class="{blurred: isBlurred}"
-       :ref="gridContainer">
+  <div
+    class="grid-container"
+    :class="{
+    blurred: gridIsBlurred
+    }"
+  >
     <Algorithm
       v-for="item in cases"
       class="grid-item"
@@ -12,6 +15,7 @@
       :type="item.type"
       :caseName="item.name"
       :key="item.name"
+      @blur-grid="blurGrid"
     >
     </Algorithm>
   </div>
@@ -31,10 +35,15 @@ export default {
       cases: Cases,
       selected: false,
       showCase: false,
-      displayCase: ''
+      displayCase: '',
+      gridIsBlurred: false,
     };
   },
-  methods: {}
+  methods: {
+    blurGrid() {
+      this.gridIsBlurred=!this.gridIsBlurred;
+    }
+  }
 };
 </script>
 
@@ -55,6 +64,10 @@ export default {
   background-color: lightblue;
   padding: 10% 10% 10% 10%;
   /* margin: 0% 0% 10% 0%; */
+}
+.blurred {
+  filter: blur(6px);
+  transition: all 0.2s linear 0s;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);

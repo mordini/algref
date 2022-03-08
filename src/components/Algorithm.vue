@@ -1,14 +1,13 @@
 <template>
   <section
+    @click="selectCase"
      class="case"
      :class="{
        blurred: isBlurred,
        selected: isSelected,
-       notSelected: Selected,
      }"
-     @click="selectCase"
    >
-    <p class="caseName">
+    <p class="caseName" >
       {{ caseName }}
     </p>
     <img :src="require(`@/assets/cases/${image}`)" />
@@ -33,17 +32,6 @@ export default {
   },
   methods: {
     selectCase() {
-      /*
-        if(isSelected is true
-            and
-          isSelected is not the one clicked on) {
-              don't do anything
-        } else {
-          this.isSelected = !this.isSelected;
-        }
-      */
-      // if(!this.isSelected && this.id)
-
       this.isSelected = !this.isSelected;
       console.log(`this.isSelected is: ${this.isSelected}`);
       console.dir(event.target);
@@ -51,9 +39,14 @@ export default {
       this.blurCases();
     },
     // PAUL NEED TO MAKE THIS BLUR WHOLE PAGE BUT NOT SELECTED
+    // PAUL NOW BLURS WHOLE GRID BUT ALSO SELECTED
+    // TELL IT TO NOT BLUR?
+    // TELL IT TO NOT BE in GRID? <--- I LIKE THIS ONE
+    // ADD A SLOT FOR SELECTED ITEMS
     blurCases() {
       console.log(`blur cases`);
-      this.isBlurred = !this.isBlurred;
+      this.$emit('blur-grid');
+      // this.isBlurred = !this.isBlurred;
     },
   },
   computed: {},
@@ -80,16 +73,12 @@ export default {
   font-family: 'Calibri';
   font-size: x-small;
 }
-.blurGrid {
-  filter: blur(6px);
-  transition: all 0.2s linear 0s;
-}
 .blurred:not(selected) {
   filter: blur(6px);
   transition: all 0.2s linear 0s;
   /* zoom: 0.4; */
 }
-.selected_OLD {
+.selected {
   transition: all 0.2s linear 0s;
   transform-origin: center;
   transform: scale(3);
