@@ -1,13 +1,13 @@
 <template>
   <section
     @click="selectCase"
-     class="case"
-     :class="{
-       blurred: isBlurred,
-       selected: isSelected,
-     }"
-   >
-    <p class="caseName" >
+    class="case"
+    :class="{
+      selected: isSelected,
+      centered: isCentered,
+    }"
+  >
+    <p class="caseName">
       {{ caseName }}
     </p>
     <img :src="require(`@/assets/cases/${image}`)" />
@@ -25,14 +25,15 @@ export default {
   props: { caseName: String, image: String, algorithm: Array, type: String },
   data() {
     return {
-      isBlurred: false,
       isSelected: false,
+      isCentered: false,
       firstLoad: true,
     };
   },
   methods: {
     selectCase() {
       this.isSelected = !this.isSelected;
+      // this.isCentered = !this.isCentered;
       console.log(`this.isSelected is: ${this.isSelected}`);
       console.dir(event.target);
       // console.log(`${event.target}`);
@@ -73,15 +74,18 @@ export default {
   font-family: 'Calibri';
   font-size: x-small;
 }
-.blurred:not(selected) {
-  filter: blur(6px);
-  transition: all 0.2s linear 0s;
-  /* zoom: 0.4; */
-}
 .selected {
   transition: all 0.2s linear 0s;
   transform-origin: center;
   transform: scale(3);
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.centered {
+  position: sticky;
+  top: 50%;
+  left: 50%;
 }
 #section {
   transition: all 0.2s linear 0s;

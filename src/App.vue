@@ -1,8 +1,9 @@
 <template>
+  <AlgorithmCard id="algorithmCard" name="algorithmCard"> </AlgorithmCard>
   <div
     class="grid-container"
     :class="{
-    blurred: gridIsBlurred
+      blurred: gridIsBlurred,
     }"
   >
     <Algorithm
@@ -24,11 +25,13 @@
 <script>
 import Algorithm from './components/Algorithm.vue';
 import Cases from '@/assets/Cases.js';
+// import AlgorithmCard from './components/AlgorithmCard.vue';
 
 export default {
   name: 'App',
   components: {
-    Algorithm
+    Algorithm,
+    // AlgorithmCard,
   },
   data() {
     return {
@@ -41,9 +44,9 @@ export default {
   },
   methods: {
     blurGrid() {
-      this.gridIsBlurred=!this.gridIsBlurred;
-    }
-  }
+      this.gridIsBlurred = !this.gridIsBlurred;
+    },
+  },
 };
 </script>
 
