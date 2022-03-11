@@ -6,7 +6,7 @@
       blurred: gridIsBlurred,
     }"
   >
-    <the-algorithm
+    <Algorithm
       v-for="item in cases"
       class="grid-item"
       :id="item.name"
@@ -17,23 +17,20 @@
       :caseName="item.name"
       :key="item.name"
       @blur-grid="blurGrid"
-    >
-    </the-algorithm>
+    />
   </div>
 </template>
 
 <script>
-import TheAlgorithm from './components/Algorithm.vue';
+import Algorithm from './components/Algorithm.vue';
 import Cases from '@/assets/Cases.js';
 // import AlgorithmCard from './components/AlgorithmCard.vue';
 
 export default {
   name: 'App',
   components: {
-    // do not need to set it specifically as attr, will work fine with just the name
-    TheAlgorithm,
-    // TheAlgorithm: TheAlgorithm,
-    // AlgorithmCard: AlgorithmCard,
+    Algorithm,
+    // AlgorithmCard,
   },
   data() {
     return {
