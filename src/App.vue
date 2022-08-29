@@ -1,5 +1,11 @@
 <template>
-  <div class="grid-container">
+  <algorithm-card id="algorithmCard" name="algorithmCard"> </algorithm-card>
+  <div
+    class="grid-container"
+    :class="{
+      blurred: gridIsBlurred,
+    }"
+  >
     <Algorithm
       v-for="item in cases"
       class="grid-item"
@@ -10,39 +16,36 @@
       :type="item.type"
       :caseName="item.name"
       :key="item.name"
-      @click="selectCase"
-    >
-    </Algorithm>
+      @blur-grid="blurGrid"
+    />
   </div>
 </template>
 
 <script>
 import Algorithm from './components/Algorithm.vue';
 import Cases from '@/assets/Cases.js';
+// import AlgorithmCard from './components/AlgorithmCard.vue';
 
 export default {
   name: 'App',
   components: {
-    Algorithm
+    Algorithm,
+    // AlgorithmCard,
   },
   data() {
     return {
       cases: Cases,
       selected: false,
       showCase: false,
-      displayCase: ''
+      displayCase: '',
+      gridIsBlurred: false,
     };
   },
   methods: {
-    selectCase() {
-      console.clear();
-      console.log(event.currentTarget);
-      // this.displayCase = event.currentTarget;
-      // this.showCase = !this.showCase;
-      this.displayCase = event.currentTarget;
-      document.getElementById('algFooter').appendChild(event.currentTarget);
-    }
-  }
+    blurGrid() {
+      this.gridIsBlurred = !this.gridIsBlurred;
+    },
+  },
 };
 </script>
 
@@ -53,20 +56,24 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  /*grid-template-columns: auto minmax(0, 1fr);*/
+  /* grid-template-columns: auto minmax(0, 1fr); */
   background-color: lightblue;
   padding: 10% 10% 10% 10%;
-  margin: 0% 0% 10% 0%;
+  /* margin: 0% 0% 10% 0%; */
+}
+.blurred {
+  filter: blur(6px);
+  transition: all 0.2s linear 0s;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 10% 10% 10% 10%;
   margin: 0 0 0 0;
   text-align: center;
